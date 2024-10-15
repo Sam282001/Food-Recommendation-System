@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        div.container {
+            border-style: double;
+            background-image: url("");
+        }
+        
+        div.friend2field {
+            font-weight: bold;
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+        
+        body {
+            padding-top: 10px;
+            background-image: url('');
+        }
+        
+        .btn {
+            float: right;
+            font-weight: bold;
+            border: 5px solid #555555;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Diet Recommendation</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="temp">Diet Prediction</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about_us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="myprofile">My profile<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="logout">logout <span class="sr-only">(current)</span></a>
+                </li>
+
+
+
+            </ul>
+        </div>
+
+    </nav>
+
+
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>Welcome to Diet Recommendation!</strong> Predict the perfect diet !!!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+    </div>
+
+
+    <div class="container">
+
+        <form action='bmical' method='post'> {% csrf_token %}
+            <br/>
+            <div class="friend2field">
+                <label for="url">Enter Name:</label>
+                <input name="name" type="text" placeholder="Enter full name" onchange="this.value = parseInt(this.value);" required>
+            </div>
+            <br>
+
+            <div class="friend2field">
+                <label for="url">Enter Gender</label>
+                <select class="form-select" name="gender" aria-label="Default select example">
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+        <option value="o">Others</option>
+      </select>
+            </div>
+            <br>
+
+            <div class="friend2field">
+                <label for="url">Enter Address:</label>
+                <input name="address" type="text" placeholder="Enter Address" onchange="this.value = parseInt(this.value);" required>
+            </div>
+            <br>
+
+            <div class="friend2field">
+                <label for="url">Enter Contact(Patient):</label>
+                <input name="contact" type="number" placeholder="Enter Contact Number:" required>
+            </div>
+            <br>
+            <div class="friend2field">
+                <label for="url">Enter Age(Patient):</label>
+                <input name="age" type="number" placeholder="Enter Contact Number:" required>
+            </div>
+            <br>
+            <div class="friend2field">
+                <label for="url">Diabetic Types</label>
+                <select class="form-select" name="diabetic" aria-label="Default select example">
+          <option value="high">High</option>
+          <option value="low">Low</option>
+          
+        </select>
+            </div>
+            <br>
+
+            <div class="friend2field">
+                <label for="url">Enter Height</label>
+                <input name="height" type="number" placeholder="Enter height in cm" step="1" min="0" required>
+            </div>
+            <br>
+
+            <div class="friend2field">
+                <label for="url">Enter Weight:</label>
+                <input name="weight" type="number" placeholder="Enter weight in kg" step="1" min="0" required>
+            </div>
+            <br>
+            <div class="friend2field">
+                <label for="url">Diabetic Types</label>
+                <select class="form-select" name="activity_level" aria-label="Default select example">
+          <option value="sedentary">sedentary</option>
+          <option value="lightly_active">lightly_active</option>
+          <option value="moderately_active">moderately_active</option>
+          <option value="very_active">very_active</option>
+          
+        </select>
+            </div>
+            <br>
+
+
+            <button type="submit" class="btn btn-dark mt-">Predict</button>
+        </form>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h1>BMI Calculator Result</h1>
+            <p>BMI: {{ bmi }}</p>
+            <p>Daily Calorie Needs: {{ calories }}</p>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+
+</html>
